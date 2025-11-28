@@ -29,7 +29,7 @@ export const Hero = ({ onStartQuiz }: HeroProps) => {
         {/* Tagline */}
         <div className="mb-12 max-w-4xl text-center animate-fade-in" style={{ animationDelay: "0.1s" }}>
           <p className="mb-6 text-xl font-semibold text-muted-foreground md:text-2xl lg:text-3xl">
-            Where Thinking Differently Is More Than Your <span className="text-accent">Superpower—</span>
+            Where Thinking Differently Is More Than Your <span className="text-accent">Superpower</span>-
             <br className="hidden md:inline" />
             It's Your Pathway to Your Next Tech Job
           </p>
