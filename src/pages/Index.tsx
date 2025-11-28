@@ -32,8 +32,8 @@ const Index = () => {
           <Hero onStartQuiz={handleStartQuiz} />
           <ProblemSolution />
           <HowItWorks />
-          <EmailSignup />
           <Features />
+          <EmailSignup />
           <ForEmployers />
           <FinalCTA onStartQuiz={handleStartQuiz} />
           <Footer />
