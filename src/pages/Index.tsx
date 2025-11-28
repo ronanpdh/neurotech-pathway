@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { Hero } from "@/components/Hero";
 import { ProblemSolution } from "@/components/ProblemSolution";
 import { HowItWorks } from "@/components/HowItWorks";
+import { EmailSignup } from "@/components/EmailSignup";
 import { Quiz } from "@/components/Quiz";
 import { Features } from "@/components/Features";
 import { ForEmployers } from "@/components/ForEmployers";
@@ -31,6 +32,7 @@ const Index = () => {
           <Hero onStartQuiz={handleStartQuiz} />
           <ProblemSolution />
           <HowItWorks />
+          <EmailSignup />
           <Features />
           <ForEmployers />
           <FinalCTA onStartQuiz={handleStartQuiz} />
