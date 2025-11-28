@@ -14,7 +14,7 @@ export const Footer = () => {
                 <Brain className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="text-2xl font-black text-foreground">
-                Neuro<span className="text-primary">Tech</span>
+                Adaptive<span className="text-primary">Mind</span>
               </span>
             </div>
             <p className="text-sm font-medium text-muted-foreground">
@@ -88,7 +88,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-12 border-t-2 border-border pt-8 text-center text-sm font-medium text-muted-foreground">
-          <p>© {currentYear} NeuroTech. All rights reserved.</p>
+          <p>© {currentYear} Adaptive Mind. All rights reserved.</p>
         </div>
       </div>
     </footer>
