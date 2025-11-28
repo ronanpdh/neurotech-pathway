@@ -20,8 +20,7 @@ export const Hero = ({
           <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-xl">
             <Brain className="h-10 w-10 text-primary-foreground" />
           </div>
-          <h1 className="text-5xl font-black tracking-tighter md:text-6xl lg:text-7xl">INSERT FANCY NAME<span className="text-accent">Logic</span>
-          </h1>
+          
         </div>
 
         {/* Tagline */}
