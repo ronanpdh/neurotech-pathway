@@ -21,7 +21,6 @@ export const Hero = ({ onStartQuiz }: HeroProps) => {
           </div>
           <h1 className="text-5xl font-black tracking-tighter md:text-6xl lg:text-7xl">
             Alt<span className="text-accent">Logic</span>
-            <span className="text-primary">Tech</span>
           </h1>
         </div>
 
