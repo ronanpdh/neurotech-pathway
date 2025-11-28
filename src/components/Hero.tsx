@@ -48,11 +48,11 @@ export const Hero = ({ onStartQuiz }: HeroProps) => {
             animationDelay: "0.2s",
           }}
         >
-          <Button
-            size="lg"
-            className="group h-14 px-8 text-lg font-bold shadow-xl hover:shadow-2xl transition-all"
-            onClick={onStartQuiz}
-          >
+        <Button
+          size="lg"
+          className="group h-14 px-8 text-lg font-bold shadow-xl hover:shadow-2xl transition-all bg-accent text-accent-foreground hover:bg-accent/90"
+          onClick={onStartQuiz}
+        >
             Get Your Free Career Roadmap
             <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
           </Button>
