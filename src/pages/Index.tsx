@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { Hero } from "@/components/Hero";
-import { SocialProof } from "@/components/SocialProof";
 import { ProblemSolution } from "@/components/ProblemSolution";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Quiz } from "@/components/Quiz";
@@ -15,7 +14,6 @@ const Index = () => {
 
   const handleStartQuiz = () => {
     setShowQuiz(true);
-    // Scroll to quiz after state updates
     setTimeout(() => {
       quizRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
@@ -31,7 +29,6 @@ const Index = () => {
       {!showQuiz ? (
         <>
           <Hero onStartQuiz={handleStartQuiz} />
-          <SocialProof />
           <ProblemSolution />
           <HowItWorks />
           <Features />

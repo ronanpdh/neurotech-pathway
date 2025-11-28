@@ -8,104 +8,112 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Neurodivergent-friendly color palette - HSL only */
-    --background: 0 0% 98%;
-    --foreground: 220 15% 20%;
+    /* High-contrast bold color palette - HSL only */
+    --background: 0 0% 100%;
+    --foreground: 220 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 20%;
+    --card-foreground: 220 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
+    --popover-foreground: 220 25% 10%;
 
-    /* Calming teal primary */
-    --primary: 190 70% 45%;
+    /* Bold teal primary */
+    --primary: 185 80% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 190 70% 85%;
+    --primary-light: 185 80% 90%;
+    --primary-dark: 185 80% 25%;
     
-    /* Warm neutral secondary */
-    --secondary: 30 15% 85%;
-    --secondary-foreground: 220 15% 20%;
+    /* Strong secondary */
+    --secondary: 220 20% 90%;
+    --secondary-foreground: 220 25% 10%;
 
-    --muted: 210 20% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 15% 40%;
 
-    /* Empowering accent */
-    --accent: 260 60% 60%;
+    /* Bold accent */
+    --accent: 280 70% 50%;
     --accent-foreground: 0 0% 100%;
 
     /* Success/progress color */
-    --success: 145 60% 50%;
+    --success: 145 70% 40%;
     --success-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 55%;
+    --destructive: 0 80% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 190 70% 45%;
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 185 80% 35%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
+
+    /* Grid accent */
+    --grid-line: 220 20% 90%;
 
     /* Smooth transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Visual hierarchy */
-    --shadow-sm: 0 1px 2px 0 hsl(220 15% 20% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(220 15% 20% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(220 15% 20% / 0.1);
+    /* Bold shadows */
+    --shadow-sm: 0 2px 4px 0 hsl(220 25% 10% / 0.08);
+    --shadow-md: 0 4px 8px -2px hsl(220 25% 10% / 0.15);
+    --shadow-lg: 0 12px 24px -4px hsl(220 25% 10% / 0.2);
+    --shadow-xl: 0 20px 40px -8px hsl(220 25% 10% / 0.25);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 220 15% 20%;
-    --sidebar-primary: 190 70% 45%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 10%;
+    --sidebar-primary: 185 80% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 20% 92%;
-    --sidebar-accent-foreground: 220 15% 20%;
-    --sidebar-border: 220 15% 88%;
-    --sidebar-ring: 190 70% 45%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 220 25% 10%;
+    --sidebar-border: 220 20% 85%;
+    --sidebar-ring: 185 80% 35%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 0 0% 95%;
+    --background: 220 25% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 25% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 190 70% 50%;
+    --primary: 185 80% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 190 70% 25%;
+    --primary-light: 185 80% 20%;
+    --primary-dark: 185 80% 60%;
 
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 60%;
 
-    --accent: 260 60% 65%;
+    --accent: 280 70% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 145 60% 55%;
+    --success: 145 70% 50%;
     --success-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 60%;
+    --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 25%;
-    --ring: 190 70% 50%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 185 80% 45%;
 
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 190 70% 50%;
+    --grid-line: 220 20% 18%;
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 185 80% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 190 70% 50%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 185 80% 45%;
   }
 }
 
@@ -116,6 +124,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Bold typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
   }
 
   /* Respect reduced motion preferences */
@@ -132,5 +145,13 @@ All colors MUST be HSL.
   /* Focus styles for keyboard navigation */
   *:focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Grid pattern utility */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }

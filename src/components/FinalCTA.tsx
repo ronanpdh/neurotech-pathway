@@ -7,18 +7,29 @@ interface FinalCTAProps {
 
 export const FinalCTA = ({ onStartQuiz }: FinalCTAProps) => {
   return (
-    <section className="border-t border-border bg-gradient-to-br from-primary/10 to-accent/10 py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Turn Your Superpower Into Your Next Tech Job
+    <section className="relative overflow-hidden border-t-2 border-border py-24 md:py-32">
+      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="absolute left-0 top-0 h-96 w-96 bg-primary/10 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 bg-accent/10 blur-3xl" />
+      
+      <div className="container relative mx-auto px-4 md:px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="mb-6 text-4xl font-black text-foreground md:text-5xl lg:text-6xl">
+            Turn Your <span className="text-primary">Superpower</span>
+            <br className="hidden md:inline" /> Into Your Next Tech Job
           </h2>
-          <p className="mb-8 text-lg text-muted-foreground">
-            Get your personalized roadmap in 5 minutes. No overwhelm. Just clear steps forward.
+          <p className="mb-10 text-xl font-semibold text-muted-foreground">
+            Get your personalized roadmap in 5 minutes.
+            <br />
+            No overwhelm. Just clear steps forward.
           </p>
-          <Button size="lg" onClick={onStartQuiz} className="group shadow-lg">
+          <Button 
+            size="lg" 
+            onClick={onStartQuiz} 
+            className="group h-14 px-8 text-lg font-bold shadow-2xl hover:shadow-xl"
+          >
             Get Your Free Career Roadmap
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
       </div>
