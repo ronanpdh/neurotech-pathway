@@ -29,44 +29,44 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section className="relative bg-muted/30 py-24 md:py-32">
+    <section className="bg-muted/20 py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-20 text-center">
-          <h2 className="mb-4 text-4xl font-black text-foreground md:text-5xl lg:text-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Your <span className="text-primary">Superpower</span>, Structured
           </h2>
-          <p className="text-xl font-semibold text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Four clear steps to your tech career
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <div key={index} className="group relative">
               {/* Connector line */}
               {index < steps.length - 1 && (
-                <div className="absolute left-full top-20 hidden h-1 w-full bg-gradient-to-r from-primary to-transparent lg:block" style={{ width: 'calc(100% - 1.5rem)' }} />
+                <div className="absolute left-full top-16 hidden h-0.5 w-full bg-gradient-to-r from-primary/40 to-transparent lg:block" style={{ width: 'calc(100% - 1.5rem)' }} />
               )}
               
-              <div className="relative flex h-full flex-col rounded-2xl border-2 border-border bg-card p-8 shadow-lg transition-all hover:border-primary hover:shadow-2xl">
-                {/* Step number - bold */}
-                <div className="absolute -left-4 -top-4 flex h-16 w-16 items-center justify-center rounded-2xl border-4 border-background bg-primary text-3xl font-black text-primary-foreground shadow-xl">
+              <div className="relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all hover:border-primary">
+                {/* Step number */}
+                <div className="absolute -left-3 -top-3 flex h-10 w-10 items-center justify-center rounded-lg border-2 border-background bg-primary text-lg font-bold text-primary-foreground">
                   {index + 1}
                 </div>
                 
                 {/* Icon */}
-                <div className="mb-6 mt-8 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 transition-colors group-hover:bg-primary/20">
-                  <step.icon className="h-10 w-10 text-primary" strokeWidth={2.5} />
+                <div className="mb-4 mt-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <step.icon className="h-6 w-6 text-primary" strokeWidth={2} />
                 </div>
 
                 {/* Content */}
-                <h3 className="mb-3 text-2xl font-black text-foreground">
+                <h3 className="mb-2 text-lg font-bold text-foreground">
                   {step.title}
                 </h3>
-                <p className="mb-2 text-base font-medium text-muted-foreground">
+                <p className="mb-1 text-sm text-muted-foreground">
                   {step.description}
                 </p>
-                <p className="text-sm font-bold text-primary">
+                <p className="text-xs font-semibold text-primary">
                   {step.detail}
                 </p>
               </div>

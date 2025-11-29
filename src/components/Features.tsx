@@ -46,32 +46,30 @@ export const Features = () => {
   ];
 
   return (
-    <section className="relative border-y-2 border-border py-24 md:py-32">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      
-      <div className="container relative mx-auto px-4 md:px-6">
-        <div className="mb-20 text-center">
-          <h2 className="mb-4 text-4xl font-black text-foreground md:text-5xl lg:text-6xl">
+    <section className="py-20 md:py-28">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="mb-12 text-center">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Designed for Minds That Think <span className="text-accent">Differently</span>
           </h2>
-          <p className="text-xl font-semibold text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             Every feature built with neurodivergent learners in mind
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="group border-2 border-border p-6 transition-all hover:border-primary hover:shadow-xl"
+              className="group border border-border p-5 transition-all hover:border-primary hover:shadow-md"
             >
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border-2 border-primary/20 bg-primary/10 transition-all group-hover:border-primary group-hover:bg-primary/20">
-                <feature.icon className="h-7 w-7 text-primary" strokeWidth={2.5} />
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                <feature.icon className="h-5 w-5 text-primary" strokeWidth={2} />
               </div>
-              <h3 className="mb-2 text-lg font-black text-foreground">
+              <h3 className="mb-1.5 text-base font-bold text-foreground">
                 {feature.title}
               </h3>
-              <p className="text-sm font-medium text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 {feature.description}
               </p>
             </Card>
