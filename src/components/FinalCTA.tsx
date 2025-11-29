@@ -8,7 +8,7 @@ interface FinalCTAProps {
 export const FinalCTA = ({ onStartQuiz }: FinalCTAProps) => {
   return (
     <section className="relative overflow-hidden border-t-2 border-border py-24 md:py-32">
-      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="absolute inset-0 grid-pattern opacity-20" />
       <div className="absolute left-0 top-0 h-96 w-96 bg-primary/10 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 bg-accent/10 blur-3xl" />
       

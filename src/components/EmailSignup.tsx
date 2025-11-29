@@ -36,7 +36,7 @@ export const EmailSignup = () => {
 
   return (
     <section className="relative overflow-hidden border-y-2 border-border bg-accent/5 py-24 md:py-32">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <div className="absolute inset-0 grid-pattern opacity-15" />
       <div className="absolute left-1/4 top-0 h-96 w-96 bg-primary/10 blur-3xl" />
       <div className="absolute bottom-0 right-1/4 h-96 w-96 bg-accent/10 blur-3xl" />
       
