@@ -8,6 +8,7 @@ import { Features } from "@/components/Features";
 import { ForEmployers } from "@/components/ForEmployers";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
+import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 
 const Index = () => {
   const [showQuiz, setShowQuiz] = useState(false);
@@ -37,6 +38,7 @@ const Index = () => {
           <ForEmployers />
           <FinalCTA onStartQuiz={handleStartQuiz} />
           <Footer />
+          <StickyMobileCTA onStartQuiz={handleStartQuiz} />
         </>
       ) : (
         <div ref={quizRef}>
