@@ -6,6 +6,11 @@ export interface AssessmentResults {
   challenge_area: string;
   environment: string;
   strength: string;
+  creative_technical: string;
+  design_interest: string;
+  technical_approach: string;
+  work_preference: string;
+  careerPath: string;
   completedAt: string;
 }
 
