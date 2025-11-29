@@ -1,16 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Brain } from "lucide-react";
+import { ArrowRight, Brain, LogIn } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 interface HeroProps {
   onStartQuiz: () => void;
 }
 export const Hero = ({
   onStartQuiz
 }: HeroProps) => {
+  const navigate = useNavigate();
+
   return <section className="relative min-h-[90vh] overflow-hidden bg-gradient-to-b from-background to-muted/20">
       {/* Subtle accent */}
       <div className="absolute right-0 top-0 h-[600px] w-[600px] bg-primary/5 blur-3xl" />
 
       <div className="container relative mx-auto flex min-h-[90vh] flex-col items-center justify-center px-4 py-20 md:px-6">
+        {/* Login Button */}
+        <div className="absolute top-6 right-6">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate("/login")}
+            className="gap-2"
+          >
+            <LogIn className="h-4 w-4" />
+            Login
+          </Button>
+        </div>
         {/* Brand */}
         <div className="mb-12 flex items-center gap-3 animate-fade-in">
           <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary">
