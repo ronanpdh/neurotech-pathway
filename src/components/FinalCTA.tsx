@@ -29,6 +29,17 @@ export const FinalCTA = ({ onStartQuiz }: FinalCTAProps) => {
             Get Your Free Career Roadmap
             <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
           </Button>
+          
+          {/* Business CTA */}
+          <div className="mt-8 pt-8 border-t border-border">
+            <p className="text-sm text-muted-foreground">
+              Looking for workplace solutions?{" "}
+              <a href="#" className="font-semibold text-accent hover:underline inline-flex items-center gap-1">
+                Talk to Us
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>

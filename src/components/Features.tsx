@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Map, Zap, BookOpen, BarChart3, Award, Users, Clock, Heart } from "lucide-react";
+import { Map, Zap, BookOpen, BarChart3, Award, Users, ClipboardCheck, Building2 } from "lucide-react";
 
 export const Features = () => {
   const features = [
@@ -34,14 +34,16 @@ export const Features = () => {
       description: "Companies that value diverse thinking",
     },
     {
-      icon: Clock,
-      title: "Adjustable Learning Pace",
-      description: "Speed up, slow down, or pause—no pressure",
+      icon: ClipboardCheck,
+      title: "Workplace Neuroinclusion Assessment",
+      description: "Evaluate and optimize your environment for diverse minds",
+      isBusiness: true,
     },
     {
-      icon: Heart,
-      title: "Executive Function Support",
-      description: "Built-in structure and organization",
+      icon: Building2,
+      title: "Team Training & Resources",
+      description: "Equip managers to support different thinking styles",
+      isBusiness: true,
     },
   ];
 
@@ -53,7 +55,7 @@ export const Features = () => {
             Designed for Minds That Think <span className="text-accent">Differently</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Every feature built with neurodivergent learners in mind
+            For individuals and businesses committed to neuroinclusion
           </p>
         </div>
 
@@ -61,10 +63,16 @@ export const Features = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="group border border-border p-5 transition-all hover:border-primary hover:shadow-md"
+              className={`group border border-border p-5 transition-all hover:shadow-md ${
+                feature.isBusiness ? 'hover:border-accent' : 'hover:border-primary'
+              }`}
             >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <feature.icon className="h-5 w-5 text-primary" strokeWidth={2} />
+              <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-lg ${
+                feature.isBusiness ? 'bg-accent/10' : 'bg-primary/10'
+              }`}>
+                <feature.icon className={`h-5 w-5 ${
+                  feature.isBusiness ? 'text-accent' : 'text-primary'
+                }`} strokeWidth={2} />
               </div>
               <h3 className="mb-1.5 text-base font-bold text-foreground">
                 {feature.title}
