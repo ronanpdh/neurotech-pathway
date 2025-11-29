@@ -1,11 +1,22 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
+export interface AssessmentResults {
+  learning_style: string;
+  focus_preference: string;
+  challenge_area: string;
+  environment: string;
+  strength: string;
+  completedAt: string;
+}
+
 interface AuthContextType {
   isAuthenticated: boolean;
   userType: "individual" | "business" | null;
+  assessmentResults: AssessmentResults | null;
   login: (type: "individual" | "business") => void;
   logout: () => void;
   switchMode: () => void;
+  saveAssessmentResults: (results: AssessmentResults) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -13,6 +24,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userType, setUserType] = useState<"individual" | "business" | null>(null);
+  const [assessmentResults, setAssessmentResults] = useState<AssessmentResults | null>(null);
 
   const login = (type: "individual" | "business") => {
     setIsAuthenticated(true);
@@ -22,6 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setIsAuthenticated(false);
     setUserType(null);
+    setAssessmentResults(null);
   };
 
   const switchMode = () => {
@@ -32,8 +45,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const saveAssessmentResults = (results: AssessmentResults) => {
+    setAssessmentResults(results);
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userType, login, logout, switchMode }}>
+    <AuthContext.Provider value={{ isAuthenticated, userType, assessmentResults, login, logout, switchMode, saveAssessmentResults }}>
       {children}
     </AuthContext.Provider>
   );

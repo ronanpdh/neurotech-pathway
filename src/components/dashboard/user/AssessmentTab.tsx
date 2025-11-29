@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "@/components/auth/AuthContext";
 import { CheckCircle2, ArrowRight, ArrowLeft, Brain } from "lucide-react";
 
 interface Question {
@@ -66,6 +68,8 @@ const assessmentQuestions: Question[] = [
 ];
 
 export const AssessmentTab = () => {
+  const navigate = useNavigate();
+  const { saveAssessmentResults } = useAuth();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isComplete, setIsComplete] = useState(false);
@@ -78,7 +82,22 @@ export const AssessmentTab = () => {
     if (currentQuestion < assessmentQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      // Save results and redirect to roadmap
+      const results = {
+        learning_style: answers.learning_style,
+        focus_preference: answers.focus_preference,
+        challenge_area: answers.challenge_area,
+        environment: answers.environment,
+        strength: answers.strength,
+        completedAt: new Date().toISOString(),
+      };
+      saveAssessmentResults(results);
       setIsComplete(true);
+      
+      // Redirect after showing completion message
+      setTimeout(() => {
+        navigate("/dashboard/roadmap");
+      }, 2000);
     }
   };
 
@@ -158,10 +177,9 @@ export const AssessmentTab = () => {
         </Card>
 
         <div className="flex justify-center">
-          <Button size="lg" className="gap-2" onClick={() => window.location.href = "/dashboard"}>
-            View Your Personalized Roadmap
-            <ArrowRight className="h-5 w-5" />
-          </Button>
+          <p className="text-sm text-muted-foreground">
+            Redirecting to your personalized roadmap...
+          </p>
         </div>
       </div>
     );
