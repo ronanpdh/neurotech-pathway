@@ -8,7 +8,7 @@ export const Hero = ({
 }: HeroProps) => {
   return <section className="relative min-h-[90vh] overflow-hidden">
       {/* Grid background */}
-      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="absolute inset-0 grid-pattern opacity-20" />
 
       {/* Bold geometric accents */}
       <div className="absolute right-0 top-0 h-96 w-96 bg-primary/10 blur-3xl" />

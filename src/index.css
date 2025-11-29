@@ -147,11 +147,11 @@ All colors MUST be HSL.
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
-  /* Grid pattern utility */
+  /* Minimal grid pattern utility */
   .grid-pattern {
     background-image: 
-      linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(hsl(var(--grid-line)) 0.5px, transparent 0.5px),
+      linear-gradient(90deg, hsl(var(--grid-line)) 0.5px, transparent 0.5px);
+    background-size: 80px 80px;
   }
 }
