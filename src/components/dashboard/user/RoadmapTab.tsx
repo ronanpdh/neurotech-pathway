@@ -1,153 +1,321 @@
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/components/auth/AuthContext";
-import { CheckCircle2, Circle, Clock, Sparkles, Brain, Target, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { 
+  Target, 
+  BookOpen, 
+  Code, 
+  Briefcase, 
+  CheckCircle2, 
+  Lock,
+  TrendingUp,
+  Brain,
+  Sparkles,
+  Palette,
+  Database,
+  Layout,
+  Circle
+} from "lucide-react";
 
-const roadmapPhases = [
-  {
-    id: 1,
-    title: "Assessment & Discovery",
-    status: "completed",
-    progress: 100,
-    tasks: [
-      { name: "Complete cognitive profile assessment", done: true },
-      { name: "Identify learning preferences", done: true },
-      { name: "Set initial career goals", done: true },
+const careerRoadmaps: Record<string, any> = {
+  ui_ux_designer: {
+    title: "UI/UX Designer",
+    icon: Palette,
+    phases: [
+      {
+        id: 1,
+        title: "Design Fundamentals",
+        description: "Master the principles of design",
+        status: "completed",
+        progress: 100,
+        milestones: ["Color Theory", "Typography", "Layout & Composition", "Design Tools (Figma)"],
+      },
+      {
+        id: 2,
+        title: "User Research & Testing",
+        description: "Learn to understand user needs",
+        status: "current",
+        progress: 60,
+        milestones: ["User Interviews", "Personas & Journey Maps", "Usability Testing", "Analytics"],
+      },
+      {
+        id: 3,
+        title: "Advanced UI/UX",
+        description: "Create sophisticated experiences",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Interaction Design", "Design Systems", "Prototyping", "Accessibility"],
+      },
+      {
+        id: 4,
+        title: "Portfolio & Career",
+        description: "Launch your design career",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Portfolio Projects", "Case Studies", "Freelance/Job Ready", "Design Community"],
+      },
     ],
   },
-  {
-    id: 2,
-    title: "Skill Building",
-    status: "current",
-    progress: 65,
-    tasks: [
-      { name: "Complete Python fundamentals course", done: true },
-      { name: "Build first portfolio project", done: true },
-      { name: "Learn data structures", done: false },
-      { name: "Practice coding challenges", done: false },
+  frontend_developer: {
+    title: "Frontend Developer",
+    icon: Layout,
+    phases: [
+      {
+        id: 1,
+        title: "Web Fundamentals",
+        description: "HTML, CSS, and JavaScript basics",
+        status: "completed",
+        progress: 100,
+        milestones: ["HTML5 & Semantic Markup", "CSS3 & Flexbox/Grid", "JavaScript ES6+", "Responsive Design"],
+      },
+      {
+        id: 2,
+        title: "Modern Frontend",
+        description: "React and modern tooling",
+        status: "current",
+        progress: 65,
+        milestones: ["React Fundamentals", "State Management", "API Integration", "Build Tools"],
+      },
+      {
+        id: 3,
+        title: "Advanced Skills",
+        description: "Performance and best practices",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["TypeScript", "Testing", "Performance Optimization", "Accessibility"],
+      },
+      {
+        id: 4,
+        title: "Career Ready",
+        description: "Build portfolio and land jobs",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Portfolio Website", "3 Major Projects", "Git & Collaboration", "Interview Prep"],
+      },
     ],
   },
-  {
-    id: 3,
-    title: "Real-World Projects",
-    status: "upcoming",
-    progress: 0,
-    tasks: [
-      { name: "Contribute to open source", done: false },
-      { name: "Build capstone project", done: false },
-      { name: "Create case studies", done: false },
+  fullstack_developer: {
+    title: "Full Stack Developer",
+    icon: Code,
+    phases: [
+      {
+        id: 1,
+        title: "Frontend Foundations",
+        description: "Client-side development",
+        status: "completed",
+        progress: 100,
+        milestones: ["HTML/CSS/JavaScript", "React", "State Management", "Responsive Design"],
+      },
+      {
+        id: 2,
+        title: "Backend Development",
+        description: "Server-side programming",
+        status: "current",
+        progress: 50,
+        milestones: ["Node.js/Python", "APIs & REST", "Authentication", "Server Architecture"],
+      },
+      {
+        id: 3,
+        title: "Database & DevOps",
+        description: "Data and deployment",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["SQL & NoSQL", "Cloud Platforms", "CI/CD", "Containerization"],
+      },
+      {
+        id: 4,
+        title: "Full Stack Projects",
+        description: "End-to-end applications",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["E-commerce App", "Social Platform", "SaaS Product", "Job Ready"],
+      },
     ],
   },
-  {
-    id: 4,
-    title: "Career Ready",
-    status: "upcoming",
-    progress: 0,
-    tasks: [
-      { name: "Optimize portfolio", done: false },
-      { name: "Practice interviews", done: false },
-      { name: "Apply to neurodiversity-friendly companies", done: false },
+  backend_developer: {
+    title: "Backend Developer",
+    icon: Database,
+    phases: [
+      {
+        id: 1,
+        title: "Programming Fundamentals",
+        description: "Core backend languages",
+        status: "completed",
+        progress: 100,
+        milestones: ["Python/Node.js/Java", "Data Structures", "Algorithms", "OOP Principles"],
+      },
+      {
+        id: 2,
+        title: "APIs & Databases",
+        description: "Build robust services",
+        status: "current",
+        progress: 70,
+        milestones: ["RESTful APIs", "SQL & PostgreSQL", "NoSQL Databases", "Authentication"],
+      },
+      {
+        id: 3,
+        title: "Advanced Backend",
+        description: "Scalable systems",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Microservices", "Caching", "Message Queues", "System Design"],
+      },
+      {
+        id: 4,
+        title: "Production Ready",
+        description: "Deploy and optimize",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["AWS/GCP/Azure", "Monitoring", "Security", "Performance Tuning"],
+      },
     ],
   },
-];
+  data_analyst: {
+    title: "Data Analyst",
+    icon: TrendingUp,
+    phases: [
+      {
+        id: 1,
+        title: "Data Fundamentals",
+        description: "Core analysis skills",
+        status: "completed",
+        progress: 100,
+        milestones: ["Excel & Spreadsheets", "SQL", "Statistics Basics", "Data Visualization"],
+      },
+      {
+        id: 2,
+        title: "Tools & Techniques",
+        description: "Professional analytics",
+        status: "current",
+        progress: 55,
+        milestones: ["Python/R", "Pandas & NumPy", "Tableau/Power BI", "Data Cleaning"],
+      },
+      {
+        id: 3,
+        title: "Advanced Analytics",
+        description: "Deeper insights",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["A/B Testing", "Predictive Analytics", "Machine Learning Basics", "Business Intelligence"],
+      },
+      {
+        id: 4,
+        title: "Career Launch",
+        description: "Professional analyst",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Portfolio Projects", "Domain Expertise", "Storytelling with Data", "Job Ready"],
+      },
+    ],
+  },
+  product_manager: {
+    title: "Product Manager",
+    icon: Briefcase,
+    phases: [
+      {
+        id: 1,
+        title: "Product Basics",
+        description: "Understanding products",
+        status: "completed",
+        progress: 100,
+        milestones: ["Product Lifecycle", "User Research", "Market Analysis", "Roadmapping"],
+      },
+      {
+        id: 2,
+        title: "Technical Skills",
+        description: "Work with engineers",
+        status: "current",
+        progress: 45,
+        milestones: ["Tech Fundamentals", "Agile/Scrum", "APIs & Architecture", "Data Analytics"],
+      },
+      {
+        id: 3,
+        title: "Strategy & Leadership",
+        description: "Lead product vision",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Product Strategy", "Stakeholder Management", "Metrics & KPIs", "Go-to-Market"],
+      },
+      {
+        id: 4,
+        title: "PM Career",
+        description: "Land PM roles",
+        status: "upcoming",
+        progress: 0,
+        milestones: ["Case Studies", "Product Portfolio", "Interview Prep", "Networking"],
+      },
+    ],
+  },
+};
 
 export const RoadmapTab = () => {
   const navigate = useNavigate();
   const { assessmentResults } = useAuth();
 
-  // Helper function to get personalized message
-  const getPersonalizedMessage = () => {
-    if (!assessmentResults) return null;
-    
-    const messages: Record<string, string> = {
-      visual: "video tutorials and diagram-based learning",
-      "hands-on": "interactive coding exercises and project-based learning",
-      auditory: "lecture-style content and discussion forums",
-      reading: "comprehensive documentation and written guides",
-    };
-
-    return messages[assessmentResults.learning_style] || "personalized content";
-  };
-
-  // If no assessment completed, prompt user
   if (!assessmentResults) {
     return (
-      <div className="space-y-6">
-        <Card className="p-8 text-center bg-gradient-to-br from-accent/5 to-primary/5 border-accent/20">
-          <div className="flex justify-center mb-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
-              <Brain className="h-8 w-8 text-accent" />
+      <Card className="p-8 text-center">
+        <div className="space-y-4">
+          <div className="flex justify-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+              <Brain className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">
-            Complete Your Assessment First
-          </h2>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            To create your personalized roadmap, we need to understand your learning style and preferences.
+          <h3 className="text-xl font-semibold text-foreground">Complete Your Assessment First</h3>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Take our learning style assessment to get your personalized roadmap tailored to how you learn best.
           </p>
-          <Button size="lg" onClick={() => navigate("/dashboard")} className="gap-2">
-            <Sparkles className="h-5 w-5" />
+          <Button className="mt-4" onClick={() => navigate("/dashboard")}>
+            <Sparkles className="h-4 w-4 mr-2" />
             Start Assessment
           </Button>
-        </Card>
-      </div>
+        </div>
+      </Card>
     );
   }
 
+  const careerPath = assessmentResults.careerPath || "frontend_developer";
+  const roadmap = careerRoadmaps[careerPath] || careerRoadmaps.frontend_developer;
+  const RoadmapIcon = roadmap.icon;
+  const phases = roadmap.phases;
+
+  // Calculate overall progress
+  const overallProgress = Math.round(
+    phases.reduce((sum: number, phase: any) => sum + phase.progress, 0) / phases.length
+  );
+
   return (
     <div className="space-y-6">
-      {/* Assessment Results Banner */}
-      <Card className="p-6 bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+      {/* Career Path Banner */}
+      <Card className="p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
         <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary flex-shrink-0">
-            <Sparkles className="h-6 w-6 text-primary-foreground" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
+            <RoadmapIcon className="h-6 w-6 text-primary" />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-foreground mb-2">
-              Your Personalized Roadmap
-            </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Based on your assessment, this roadmap is optimized for {getPersonalizedMessage()} and your unique strengths.
+            <h3 className="text-lg font-semibold text-foreground mb-2">Your Career Path: {roadmap.title}</h3>
+            <p className="text-sm text-muted-foreground mb-3">
+              This roadmap is tailored to your learning style ({assessmentResults.learning_style}) and strengths ({assessmentResults.strength})
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="flex items-center gap-2 text-sm">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
-                  <Brain className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Learning Style</p>
-                  <p className="font-semibold text-foreground capitalize">{assessmentResults.learning_style}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
-                  <Clock className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Focus Style</p>
-                  <p className="font-semibold text-foreground capitalize">{assessmentResults.focus_preference}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
-                  <Target className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Challenge</p>
-                  <p className="font-semibold text-foreground capitalize">{assessmentResults.challenge_area}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
-                  <Zap className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Strength</p>
-                  <p className="font-semibold text-foreground capitalize">{assessmentResults.strength}</p>
-                </div>
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {assessmentResults.creative_technical && (
+                <Badge variant="secondary" className="text-xs">
+                  {assessmentResults.creative_technical} focused
+                </Badge>
+              )}
+              {assessmentResults.technical_approach && (
+                <Badge variant="secondary" className="text-xs">
+                  {assessmentResults.technical_approach}
+                </Badge>
+              )}
+              {assessmentResults.work_preference && (
+                <Badge variant="secondary" className="text-xs">
+                  {assessmentResults.work_preference} work
+                </Badge>
+              )}
             </div>
           </div>
         </div>
@@ -156,7 +324,7 @@ export const RoadmapTab = () => {
       <div>
         <h2 className="text-2xl font-bold text-foreground">Your Career Roadmap</h2>
         <p className="text-muted-foreground">
-          Phase 2 of 4 • 65% complete overall
+          {overallProgress}% complete overall
         </p>
       </div>
 
@@ -165,15 +333,15 @@ export const RoadmapTab = () => {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-foreground">Overall Progress</span>
-            <span className="text-sm font-semibold text-primary">41%</span>
+            <span className="text-sm font-semibold text-primary">{overallProgress}%</span>
           </div>
-          <Progress value={41} className="h-3" />
+          <Progress value={overallProgress} className="h-3" />
         </div>
       </Card>
 
       {/* Phases */}
       <div className="space-y-4">
-        {roadmapPhases.map((phase, index) => (
+        {phases.map((phase: any) => (
           <Card key={phase.id} className="p-6">
             <div className="space-y-4">
               {/* Phase Header */}
@@ -182,19 +350,15 @@ export const RoadmapTab = () => {
                   {phase.status === "completed" ? (
                     <CheckCircle2 className="h-6 w-6 text-success mt-0.5" />
                   ) : phase.status === "current" ? (
-                    <Clock className="h-6 w-6 text-primary mt-0.5" />
+                    <Target className="h-6 w-6 text-primary mt-0.5" />
                   ) : (
-                    <Circle className="h-6 w-6 text-muted-foreground mt-0.5" />
+                    <Lock className="h-6 w-6 text-muted-foreground mt-0.5" />
                   )}
                   <div>
                     <h3 className="font-semibold text-foreground">
                       Phase {phase.id}: {phase.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {phase.status === "completed" && "Completed"}
-                      {phase.status === "current" && "In Progress"}
-                      {phase.status === "upcoming" && "Coming Soon"}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{phase.description}</p>
                   </div>
                 </div>
                 <span className="text-sm font-semibold text-foreground">{phase.progress}%</span>
@@ -205,21 +369,23 @@ export const RoadmapTab = () => {
                 <Progress value={phase.progress} className="h-2" />
               )}
 
-              {/* Tasks */}
+              {/* Milestones */}
               <div className="ml-9 space-y-2">
-                {phase.tasks.map((task, taskIndex) => (
-                  <div key={taskIndex} className="flex items-center gap-2">
-                    {task.done ? (
+                {phase.milestones.map((milestone: string, index: number) => (
+                  <div key={index} className="flex items-center gap-2">
+                    {phase.status === "completed" || (phase.status === "current" && index < 2) ? (
                       <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
                     ) : (
                       <Circle className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                     )}
                     <span
                       className={`text-sm ${
-                        task.done ? "text-muted-foreground line-through" : "text-foreground"
+                        phase.status === "completed" || (phase.status === "current" && index < 2)
+                          ? "text-muted-foreground line-through"
+                          : "text-foreground"
                       }`}
                     >
-                      {task.name}
+                      {milestone}
                     </span>
                   </div>
                 ))}
