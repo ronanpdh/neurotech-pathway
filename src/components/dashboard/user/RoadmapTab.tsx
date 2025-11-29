@@ -1,6 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle2, Circle, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/components/auth/AuthContext";
+import { CheckCircle2, Circle, Clock, Sparkles, Brain, Target, Zap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const roadmapPhases = [
   {
@@ -51,8 +54,105 @@ const roadmapPhases = [
 ];
 
 export const RoadmapTab = () => {
+  const navigate = useNavigate();
+  const { assessmentResults } = useAuth();
+
+  // Helper function to get personalized message
+  const getPersonalizedMessage = () => {
+    if (!assessmentResults) return null;
+    
+    const messages: Record<string, string> = {
+      visual: "video tutorials and diagram-based learning",
+      "hands-on": "interactive coding exercises and project-based learning",
+      auditory: "lecture-style content and discussion forums",
+      reading: "comprehensive documentation and written guides",
+    };
+
+    return messages[assessmentResults.learning_style] || "personalized content";
+  };
+
+  // If no assessment completed, prompt user
+  if (!assessmentResults) {
+    return (
+      <div className="space-y-6">
+        <Card className="p-8 text-center bg-gradient-to-br from-accent/5 to-primary/5 border-accent/20">
+          <div className="flex justify-center mb-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
+              <Brain className="h-8 w-8 text-accent" />
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold text-foreground mb-2">
+            Complete Your Assessment First
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            To create your personalized roadmap, we need to understand your learning style and preferences.
+          </p>
+          <Button size="lg" onClick={() => navigate("/dashboard")} className="gap-2">
+            <Sparkles className="h-5 w-5" />
+            Start Assessment
+          </Button>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
+      {/* Assessment Results Banner */}
+      <Card className="p-6 bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+        <div className="flex items-start gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary flex-shrink-0">
+            <Sparkles className="h-6 w-6 text-primary-foreground" />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              Your Personalized Roadmap
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Based on your assessment, this roadmap is optimized for {getPersonalizedMessage()} and your unique strengths.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="flex items-center gap-2 text-sm">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
+                  <Brain className="h-4 w-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Learning Style</p>
+                  <p className="font-semibold text-foreground capitalize">{assessmentResults.learning_style}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
+                  <Clock className="h-4 w-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Focus Style</p>
+                  <p className="font-semibold text-foreground capitalize">{assessmentResults.focus_preference}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
+                  <Target className="h-4 w-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Challenge</p>
+                  <p className="font-semibold text-foreground capitalize">{assessmentResults.challenge_area}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/60">
+                  <Zap className="h-4 w-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Strength</p>
+                  <p className="font-semibold text-foreground capitalize">{assessmentResults.strength}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
       <div>
         <h2 className="text-2xl font-bold text-foreground">Your Career Roadmap</h2>
         <p className="text-muted-foreground">
