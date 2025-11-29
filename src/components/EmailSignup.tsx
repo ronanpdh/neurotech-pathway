@@ -77,6 +77,12 @@ export const EmailSignup = () => {
             <p className="mt-3 text-center text-xs text-muted-foreground">
               No spam. Unsubscribe anytime. Your privacy matters.
             </p>
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              Are you an employer?{" "}
+              <a href="#" className="font-semibold text-accent hover:underline">
+                Contact us for business solutions
+              </a>
+            </p>
           </form>
 
           <div className="mt-12 grid gap-4 md:grid-cols-3">

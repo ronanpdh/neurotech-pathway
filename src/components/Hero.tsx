@@ -25,6 +25,11 @@ export const Hero = ({
         <div className="mb-12 max-w-3xl text-center animate-fade-in" style={{
         animationDelay: "0.1s"
       }}>
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5">
+            <span className="text-xs font-semibold tracking-wide text-primary">
+              For Individuals & Businesses
+            </span>
+          </div>
           <h1 className="mb-4 text-3xl font-bold text-foreground md:text-5xl lg:text-6xl">
             Where Thinking Differently Is Your <span className="text-primary">Pathway</span> to Tech
           </h1>
